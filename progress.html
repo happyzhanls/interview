@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进度条UI破解</title>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.css">
+  <style>
+    :root {
+      --player-width: 640px;
+    }
+    .html5-video-player {
+      position: relative;
+      overflow: hidden;
+      width: var(--player-width);
+    }
+    .html5-video-player:hover .bottom {
+      opacity: 1;
+    }
+    #myVideo {
+      /* 去除div之间大概4px的空隙 */
+      display: block;
+      width: var(--player-width); 
+    }
+    .bottom {
+      position: absolute;
+      left: 12px;
+      bottom: 0;
+      height: 36px;
+      width: calc(100% - 24px);
+      z-index: 60;
+      padding-top: 5px;
+      text-align: left;
+      transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
+      opacity: 1;
+    }
+    .progress-bar-container {
+      height: 5px;
+      cursor: pointer;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      background-color: rgba(255,255,255,.5);
+    }
+    .controls {
+      height: 36px;
+      line-height: 36px;
+      text-align: left;
+      overflow: hidden;
+    }
+    .left-controls {
+      float: left;
+      height: 100%;
+      display: flex;
+    }
+    .right-controls {
+      float: right;
+      height: 100%;
+    }
+    .scrubber-container {
+      position: absolute;
+      top: -4px;
+      left: -6.5px;
+      z-index: 43;
+      transform: translateX(0);
+    }
+    .scrubber-button {
+      width: 13px;
+      height: 13px;
+      border-radius: 6.5px;
+      background-color: #f00;
+    }
+    .play-button {
+      width: 46px;
+      height: 100%;
+    }
+    .play-button:hover, .next-button:hover {
+      background-color: rgba(0, 0, 0, .1);
+    }
+    button {
+      outline: 0;
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+    }
+    .next-button {
+      width: 36px;
+      height: 100%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="html5-video-player">
+    <div class="html5-video-container">
+      <video src="./cat.mp4" id="myVideo" nocontrols>
+        Your browser is too old which doesn't support HTML5 video.
+      </video>
+    </div>
+    <div class="bottom">
+      <div class="progress-bar-container">
+        <div class="chapters-container"></div>
+        <div class="scrubber-container" draggable="true">
+          <div class="scrubber-button"></div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="left-controls">
+          <button class="play-button">
+            <svg t="1591602770613" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16883" width="100%" height="100%"><path d="M341.333333 219.306667 341.333333 816.64 810.666667 517.973333 341.333333 219.306667Z" p-id="16884"></path></svg>
+          </button>
+          <a class="next-button" href="javascript: void(0);;">
+            <svg t="1591606006830" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20606" width="100%" height="100%"><path d="M682.666667 768h85.333333V256h-85.333333M256 768l362.666667-256L256 256v512z" fill="" p-id="20607"></path></svg>
+          </a>
+        </div>
+        <div class="right-controls"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="./progress.js" type="javascript"></script>
+</body>
+</html>
